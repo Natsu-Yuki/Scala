@@ -1,5 +1,7 @@
 package Test
 
+import scala.collection
+import scala.collection.parallel.mutable
 import scala.io.Source
 
 object Main{
@@ -72,7 +74,55 @@ object Main{
   def test13(i:Int): Unit ={
     println(i.toString)
   }
+  def test14()={
+    val a = Array(1,2,3,4)
+
+    val b = a.reduceLeft(_*_)
+    println(b)
+  }
+
+  def test15(): Unit ={
+    var list = List(1,2,3,4)
+
+    list.foreach(println(_))
+    var b = 0::list
+
+
+    println(list.head)
+    println(list.tail)
+    b.foreach(println(_))
+  }
+
+  def test16(): Unit ={
+    val set = new collection.mutable.HashSet[Int]()
+    set+=1
+    set.foreach(println(_))
+    println()
+    val sett = new  collection.mutable.LinkedHashSet[Int]()
+    sett+=(1,2,3,35,6)
+    sett.foreach(println(_))
+
+  }
+
+  def test17(): Unit ={
+    List("natsu","yuki").map("my name is"+_).foreach(println(_))
+    List("natsu yuki").map(_.split(" ")).foreach(println(_))
+    val l =  List("natsu","yuki").zip(List(100,100))
+    println(l.map(_._1))
+  }
+
+  def test18(name:String){
+    name match {
+      case _name=>println(_name)
+    }
+  }
+  def test19(): Unit ={
+    val s = new Student[Int,String](18,"natsu")
+
+  }
   def main(args: Array[String]): Unit = {
-    test13(1)
+
+    test19()
+
   }
 }
